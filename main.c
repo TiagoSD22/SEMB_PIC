@@ -116,18 +116,18 @@ void EnviarImagem(void){
  * o filtro de Roberts.
  */
 void RobertsCrossSerial(void){
-    robertsLED = 1;
+    //robertsLED = 1;
     short i,j;
     unsigned char novo_pixel;
     for(i = 1; i < imgALTURA - 1; i++){
         for(j = 1; j < imgLARGURA - 1; j++){
             novo_pixel = RobertsCross(i,j);
-            comunicacaoLED = 1;
-            UART_Escrever_Pixel(novo_pixel);
-            comunicacaoLED = 0;
+            //comunicacaoLED = 1;
+            //UART_Escrever_Pixel(novo_pixel);
+            //comunicacaoLED = 0;
         }
     }
-    robertsLED = 0;
+    //robertsLED = 0;
 }
 
 /*
@@ -137,20 +137,24 @@ void RobertsCrossSerial(void){
  * para o computador. Caso o comando o seja ROB, o MCU executa o filtro de Roberts Cross.
  */
 int main(void) {
-    char entrada[4];
+    //char entrada[4];
     
     ConfigurarPIC();
-    UART_iniciar();  
+    //UART_iniciar();  
     LATA = 0x10;
     
     while (1) {
-        UART_Ler_Texto(entrada);
+        /*UART_Ler_Texto(entrada);
         if(strcmp(entrada,"GET") == 0){
             EnviarImagem();
         }
         else if(strcmp(entrada,"ROB") == 0){
             RobertsCrossSerial();
-        }
+        }*/
+        LATBbits.LATB0 = 1;
+        RobertsCrossSerial();
+        LATBbits.LATB0 = 0;
+        RobertsCrossSerial();
     }
     
     return EXIT_SUCCESS;
