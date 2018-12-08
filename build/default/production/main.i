@@ -21422,34 +21422,40 @@ double y0(double);
 double y1(double);
 double yn(int, double);
 # 17 "./image.h" 2
-# 27 "./image.h"
-const unsigned char pixels[4][4] = {1, 10, 20, 30,
-                                                     1, 10, 20, 30,
-                                                     1, 10, 20, 30,
-                                                     1, 10, 20, 30,};
+
+int imgLargura;
+int imgAltura;
 
 
-short robertX[2][2] = {{1,0},{0,-1}};
-short robertY[2][2] = {{0,1},{-1,0}};
-# 48 "./image.h"
-unsigned char RobertsCross(short i, short j){
-    int Gx = 0;
-    int Gy = 0;
-    short x,y;
-    unsigned char novo_pixel;
-    for(x = 0; x < 2; x++){
-        for(y = 0; y < 2; y++){
-            if(i > 1 && j > 1){
-                Gx += pixels[i - 1 + x][j - 1 + y] * robertX[x][y];
-                Gy += pixels[i - 1 + x][j - 1 + y] * robertY[x][y];
-            }
-            else{
-                Gx += pixels[i + x][j + y] * robertX[x][y];
-                Gy += pixels[i + x][j + y] * robertY[x][y];
-            }
+
+
+
+
+
+unsigned char regiaoAtual[2][2];
+
+unsigned int isqrt(int Value) {
+    unsigned Root = 0;
+    unsigned Bit;
+    for (Bit = 0x4000; Bit > 0; Bit >>= 2) {
+        unsigned Trial = Root + Bit;
+        Root >>= 1;
+        if (Trial <= Value) {
+            Root += Bit;
+            Value -= Trial;
         }
     }
-    novo_pixel = sqrtf((float)(Gx*Gx) + (float)(Gy*Gy));
+    return Root;
+}
+# 55 "./image.h"
+unsigned char RobertsCross(){
+    int Gx = 0;
+    int Gy = 0;
+    unsigned char novo_pixel;
+    Gx = regiaoAtual[0][0] - regiaoAtual[1][1];
+    Gy = regiaoAtual[0][1] - regiaoAtual[1][0];
+
+    novo_pixel = isqrt((Gx*Gx + Gy*Gy));
     return novo_pixel;
 }
 # 72 "main.c" 2
@@ -21460,9 +21466,9 @@ void UART_iniciar(){
     ANSELCbits.ANSC6 = 0;
     RC6PPS = 0x10;
     RXPPSbits.RXPPS = 0x17;
-    TX1STAbits.BRGH = 0;
+    TX1STAbits.BRGH = 1;
     BAUDCON1bits.BRG16 = 0;
-    SPBRG = 51;
+    SPBRG = 16;
     RC1STAbits.SPEN = 1;
     RC1STAbits.CREN = 1;
     TX1STAbits.TXEN = 1;
@@ -21473,6 +21479,11 @@ void UART_iniciar(){
 char UART_Ler(){
     while(!RCIF);
     return RCREG;
+}
+
+void UART_Ler_Pixel(unsigned char* p){
+    while(!RCIF);
+    *p = (unsigned char)RCREG;
 }
 
 
@@ -21516,41 +21527,70 @@ void UART_Escrever_Texto(char* texto){
         UART_Escrever(texto[index]);
 }
 # 73 "main.c" 2
-# 85 "main.c"
+
+
+
+
+
+
+
+
+char entrada[10];
+
+
+
+
+
 void ConfigurarPIC(void){
     TRISA = 0x00;
     TRISB = 0x00;
     TRISC = 0x80;
 }
-
-
-
-
-
-void EnviarImagem(void){
-    short i,j;
-    LATAbits.LATA7 = 1;
-    for(i = 1; i < 4 - 1; i++){
-        for(j = 1; j < 4 - 1; j++){
-            UART_Escrever_Pixel(pixels[i][j]);
-        }
-    }
-    LATAbits.LATA7 = 0;
-}
-# 118 "main.c"
+# 105 "main.c"
 void RobertsCrossSerial(void){
-
-    short i,j;
+    short i,j,w,h;
+    unsigned char p;
     unsigned char novo_pixel;
-    for(i = 1; i < 4 - 1; i++){
-        for(j = 1; j < 4 - 1; j++){
-            novo_pixel = RobertsCross(i,j);
-
-
-
+    LATAbits.LATA6 = 1;
+    for(i = 0; i < imgAltura; i++){
+        for(j = 0; j < imgLargura; j++){
+            for(h = 0; h < 2; h++){
+                for(w = 0; w < 2; w++){
+                    UART_Ler_Pixel(&p);
+                    regiaoAtual[h][w] = p;
+                }
+            }
+            novo_pixel = RobertsCross();
+            LATAbits.LATA7 = 1;
+            UART_Escrever_Pixel(novo_pixel);
+            LATAbits.LATA7 = 0;
         }
     }
+    LATAbits.LATA6 = 0;
+}
 
+void obterDimensoes(){
+    short i = 0;
+    short j;
+    imgLargura = 0;
+    imgAltura = 0;
+    while(entrada[i] != 'x'){
+        imgLargura = 10 * imgLargura + (entrada[i] - '0');
+        i++;
+    }
+    i++;
+    while(entrada[i] != '\0'){
+        imgAltura = 10 * imgAltura + (entrada[i] - '0');
+        i++;
+    }
+}
+
+void iniciarConexao(){
+    UART_Escrever_Texto("ACK");
+    UART_Ler_Texto(entrada);
+    obterDimensoes();
+    UART_Escrever_Texto("ACK");
+    RobertsCrossSerial();
 }
 
 
@@ -21560,24 +21600,15 @@ void RobertsCrossSerial(void){
 
 
 int main(void) {
-
-
     ConfigurarPIC();
-
+    UART_iniciar();
     LATA = 0x10;
 
     while (1) {
-
-
-
-
-
-
-
-        LATBbits.LATB0 = 1;
-        RobertsCrossSerial();
-        LATBbits.LATB0 = 0;
-        RobertsCrossSerial();
+        UART_Ler_Texto(entrada);
+        if(strcmp(entrada,"SYN") == 0){
+            iniciarConexao();
+        }
     }
 
     return 0;

@@ -11,6 +11,7 @@
 import serial
 from serial import Serial
 import array
+import time
 
 '''
  * Esta função define que a recepção será feita byte a byte, define o número total de pixels a serem recebidos e inicia a espera
@@ -22,13 +23,15 @@ def recebe_pixels():
     pixels = array.array('B')
     totalPixelsEsperado = 3010
     print("Recebendo pixels")
-    
+    inicio = time.time()
     while nPixels < totalPixelsEsperado:
         pixel = ser.read(1)
         if(pixel != b''):
             nPixels += 1
             pixels.append(ord(pixel))
+    fim = time.time()  
     print("Transferência concluída!")
+    print("Tempo de conclusão(s): ",fim - inicio)
     return pixels
 '''
  * Quando o script é executado são definidas a porta de recepção e a taxa de transmissão. O comando ROB é enviado à MCU, para que se inicie
@@ -36,7 +39,7 @@ def recebe_pixels():
  * cabeçalho e os bytes do bytearray, e por fim gera como saída a imagem .PGM com o filtro já aplicado.
 '''
 if __name__ == "__main__":
-    ser = serial.Serial(port = "/dev/ttyUSB0", baudrate = 9600, timeout = 0)
+    ser = serial.Serial(port = "/dev/ttyUSB0", baudrate = 115200, timeout = 0)
     ser.write(b'ROB$')
 
     pixels = recebe_pixels()

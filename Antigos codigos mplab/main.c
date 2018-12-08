@@ -4,27 +4,20 @@
  *  principal da aplicação. O MCU fica a espera de um comando enviado pela porta serial, e executa o algorito de
  *  Roberts Cross para detecção de bordas na imagem armazenada no arquivo image.h. Os valores dos novos pixels são
  *  enviados para a interface serial onde podem ser lidos por um pc através de um adaptador usb/serial(ttl).
-
  *  Autores : Tiago Dionizio e Lucas Magalhães
-
  *  Copyright (C) 2018 Tiago Siqueira Dionizio  <tiagosdionizio@gmail.com>
-
  *  Copyright (C) 2018 Lucas Magalhães de Sousa <lucasmag97@gmail.com> 
-
  *  Data de Atualização : 20 de Novembro de 2018
-
  *  Modo de uso:
  *  A aplicação é controlada por comandos enviados para a entrada serial EUSART (RX - RC7, TX - RC6) do MCU, essas 
  *  entradas podem ser enviadas por um script em python usando o módulo pySerial, por meio desse script é possível
  *  ordenar a execução do algoritmo de Roberts e gerar a imagem resultante com os pixels calculados e enviados pelo
  *  MCU. 
-
  *  Restrição de uso:
  *  Necessita-se de um interpretador python ( >= 2.7) instalado na máquina que se comunicará com a aplicação,
  *  bem como o módulo pySerial. Além disso, é necessário um adaptador usb/serial(ttl), como o pl2303, de modo que 
  *  que possa haver um canal de comunicação entre o computador e a aplicação embarcada. A imagem gerada é em formato
  *  .pgm binário (P5).
-
  *  Referência para o algoritmo: 
  *  MARQUES FILHO, Ogê; VIEIRA NETO, Hugo. Processamento Digital de Imagens, Rio de Janeiro: Brasport, 1999, pg: 97.
 */
@@ -78,8 +71,6 @@
 #define comunicacaoLED  LATAbits.LATA7
 #define robertsLED      LATAbits.LATA6
 
-char entrada[10];
-
 /*
  *  Esta função configura alguns registradores do MCU pic16f18875, os pinos dos bloco A e B configurados como saída,
  *  enquanto o bloco C tem o pino RC7 como entrada e os demais como saída.
@@ -88,6 +79,21 @@ void ConfigurarPIC(void){
     TRISA = 0x00;
     TRISB = 0x00;
     TRISC = 0x80;
+}
+
+/*
+ * Esta função é chamada quando o comando GET é recebido na interface serial EUSART e envia os pixels referentes 
+ * à imagem de teste armazenada no arquivo image.h, serve para checar se a imagem foi armazenada corretamente.
+ */
+void EnviarImagem(void){
+    short i,j;
+    comunicacaoLED = 1;
+    for(i = 1; i < imgALTURA - 1; i++){
+        for(j = 1; j < imgLARGURA - 1; j++){
+            UART_Escrever_Pixel(pixels[i][j]);
+        }
+    }
+    comunicacaoLED = 0;
 }
 
 /*
@@ -103,49 +109,18 @@ void ConfigurarPIC(void){
  * o filtro de Roberts.
  */
 void RobertsCrossSerial(void){
-    short i,j,w,h;
-    unsigned char p;
-    unsigned char novo_pixel;
     robertsLED = 1;
-    for(i = 0; i < imgAltura; i++){
-        for(j = 0; j < imgLargura; j++){
-            for(h = 0; h < 2; h++){
-                for(w = 0; w < 2; w++){
-                    UART_Ler_Pixel(&p);
-                    regiaoAtual[h][w] = p;
-                }
-            }
-            novo_pixel = RobertsCross();
+    short i,j;
+    unsigned char novo_pixel;
+    for(i = 1; i < imgALTURA - 1; i++){
+        for(j = 1; j < imgLARGURA - 1; j++){
+            novo_pixel = RobertsCross(i,j);
             comunicacaoLED = 1;
             UART_Escrever_Pixel(novo_pixel);
             comunicacaoLED = 0;
         }
     }
     robertsLED = 0;
-}
-
-void obterDimensoes(){
-    short i = 0;
-    short j;
-    imgLargura = 0;
-    imgAltura = 0;
-    while(entrada[i] != 'x'){
-        imgLargura = 10 * imgLargura + (entrada[i] - '0');
-        i++;
-    }
-    i++;
-    while(entrada[i] != '\0'){
-        imgAltura = 10 * imgAltura + (entrada[i] - '0'); 
-        i++;
-    }
-}
-
-void iniciarConexao(){
-    UART_Escrever_Texto("ACK");//confirmou conexão com o PC
-    UART_Ler_Texto(entrada);//espera as dimensões da imagem a ser processada
-    obterDimensoes();//parseia a mensagem recebida e converte para valores inteiros
-    UART_Escrever_Texto("ACK");//confirma o recebimento e conversão da resolução da imagem
-    RobertsCrossSerial();//inicia o filtro de Roberts
 }
 
 /*
@@ -155,14 +130,19 @@ void iniciarConexao(){
  * para o computador. Caso o comando o seja ROB, o MCU executa o filtro de Roberts Cross.
  */
 int main(void) {
+    char entrada[4];
+    
     ConfigurarPIC();
     UART_iniciar();  
     LATA = 0x10;
     
     while (1) {
         UART_Ler_Texto(entrada);
-        if(strcmp(entrada,"SYN") == 0){ 
-            iniciarConexao();
+        if(strcmp(entrada,"GET") == 0){
+            EnviarImagem();
+        }
+        else if(strcmp(entrada,"ROB") == 0){
+            RobertsCrossSerial();
         }
     }
     

@@ -1,7 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"571 /opt/microchip/xc8/v2.00/pic/include/c99/math.h
-[; ;/opt/microchip/xc8/v2.00/pic/include/c99/math.h: 571: float sqrtf(float);
-[v _sqrtf `(f ~T0 @X0 0 ef1`f ]
 "35084 /opt/microchip/xc8/v2.00/pic/include/pic16f18875.h
 [; ;/opt/microchip/xc8/v2.00/pic/include/pic16f18875.h: 35084:     struct {
 [s S1550 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -100,17 +97,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "950
 [; ;/opt/microchip/xc8/v2.00/pic/include/pic16f18875.h: 950: extern volatile unsigned char LATA __attribute__((address(0x016)));
 [v _LATA `Vuc ~T0 @X0 0 e@22 ]
-"1018
-[; ;/opt/microchip/xc8/v2.00/pic/include/pic16f18875.h: 1018:     struct {
-[s S55 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S55 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
-"1017
-[; ;/opt/microchip/xc8/v2.00/pic/include/pic16f18875.h: 1017: typedef union {
-[u S54 `S55 1 ]
-[n S54 . . ]
-"1029
-[; ;/opt/microchip/xc8/v2.00/pic/include/pic16f18875.h: 1029: extern volatile LATBbits_t LATBbits __attribute__((address(0x017)));
-[v _LATBbits `VS54 ~T0 @X0 0 e@23 ]
+"39 /opt/microchip/xc8/v2.00/pic/include/c99/string.h
+[; ;/opt/microchip/xc8/v2.00/pic/include/c99/string.h: 39: int strcmp (const char *, const char *);
+[v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
 "38 main.c
 [p x FEXTOSC  = OFF ]
 "39
@@ -1793,161 +1782,107 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36645
 [; ;/opt/microchip/xc8/v2.00/pic/include/pic16f18875.h: 36645: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-[v F12827 `Cuc ~T0 @X0 -> 4 `i t ]
-"27 ./image.h
-[; ;./image.h: 27: const unsigned char pixels[4][4] = {1, 10, 20, 30,
-[v _pixels `F12827 ~T0 @X0 -> 4 `i e ]
-[i _pixels
-:U ..
-:U ..
--> -> 1 `i `uc
--> -> 10 `i `uc
--> -> 20 `i `uc
--> -> 30 `i `uc
-..
-:U ..
--> -> 1 `i `uc
--> -> 10 `i `uc
--> -> 20 `i `uc
--> -> 30 `i `uc
-..
-:U ..
--> -> 1 `i `uc
--> -> 10 `i `uc
--> -> 20 `i `uc
--> -> 30 `i `uc
-..
-:U ..
--> -> 1 `i `uc
--> -> 10 `i `uc
--> -> 20 `i `uc
--> -> 30 `i `uc
-..
-..
-]
-[v F12829 `s ~T0 @X0 -> 2 `i t ]
-"33
-[; ;./image.h: 33: short robertX[2][2] = {{1,0},{0,-1}};
-[v _robertX `F12829 ~T0 @X0 -> 2 `i e ]
-[i _robertX
-:U ..
-:U ..
--> -> 1 `i `s
--> -> 0 `i `s
-..
-:U ..
--> -> 0 `i `s
--> -U -> 1 `i `s
-..
-..
-]
-[v F12831 `s ~T0 @X0 -> 2 `i t ]
-"34
-[; ;./image.h: 34: short robertY[2][2] = {{0,1},{-1,0}};
-[v _robertY `F12831 ~T0 @X0 -> 2 `i e ]
-[i _robertY
-:U ..
-:U ..
--> -> 0 `i `s
--> -> 1 `i `s
-..
-:U ..
--> -U -> 1 `i `s
--> -> 0 `i `s
-..
-..
-]
-"48
-[; ;./image.h: 48: unsigned char RobertsCross(short i, short j){
-[v _RobertsCross `(uc ~T0 @X0 1 ef2`s`s ]
+"18 ./image.h
+[; ;./image.h: 18: int imgLargura;
+[v _imgLargura `i ~T0 @X0 1 e ]
+"19
+[; ;./image.h: 19: int imgAltura;
+[v _imgAltura `i ~T0 @X0 1 e ]
+[v F12829 `uc ~T0 @X0 -> 2 `i t ]
+"27
+[; ;./image.h: 27: unsigned char regiaoAtual[2][2];
+[v _regiaoAtual `F12829 ~T0 @X0 -> 2 `i e ]
+"29
+[; ;./image.h: 29: unsigned int isqrt(int Value) {
+[v _isqrt `(ui ~T0 @X0 1 ef1`i ]
 {
-[e :U _RobertsCross ]
-[v _i `s ~T0 @X0 1 r1 ]
-[v _j `s ~T0 @X0 1 r2 ]
+[e :U _isqrt ]
+[v _Value `i ~T0 @X0 1 r1 ]
 [f ]
-"49
-[; ;./image.h: 49:     int Gx = 0;
-[v _Gx `i ~T0 @X0 1 a ]
-[e = _Gx -> 0 `i ]
-"50
-[; ;./image.h: 50:     int Gy = 0;
-[v _Gy `i ~T0 @X0 1 a ]
-[e = _Gy -> 0 `i ]
-"51
-[; ;./image.h: 51:     short x,y;
-[v _x `s ~T0 @X0 1 a ]
-[v _y `s ~T0 @X0 1 a ]
-"52
-[; ;./image.h: 52:     unsigned char novo_pixel;
-[v _novo_pixel `uc ~T0 @X0 1 a ]
-"53
-[; ;./image.h: 53:     for(x = 0; x < 2; x++){
+"30
+[; ;./image.h: 30:     unsigned Root = 0;
+[v _Root `ui ~T0 @X0 1 a ]
+[e = _Root -> -> 0 `i `ui ]
+"31
+[; ;./image.h: 31:     unsigned Bit;
+[v _Bit `ui ~T0 @X0 1 a ]
+"32
+[; ;./image.h: 32:     for (Bit = 0x4000; Bit > 0; Bit >>= 2) {
 {
-[e = _x -> -> 0 `i `s ]
-[e $ < -> _x `i -> 2 `i 1627  ]
+[e = _Bit -> -> 16384 `i `ui ]
+[e $ > _Bit -> -> 0 `i `ui 1627  ]
 [e $U 1628  ]
 [e :U 1627 ]
 {
-"54
-[; ;./image.h: 54:         for(y = 0; y < 2; y++){
+"33
+[; ;./image.h: 33:         unsigned Trial = Root + Bit;
+[v _Trial `ui ~T0 @X0 1 a ]
+[e = _Trial + _Root _Bit ]
+"34
+[; ;./image.h: 34:         Root >>= 1;
+[e =>> _Root -> -> 1 `i `ui ]
+"35
+[; ;./image.h: 35:         if (Trial <= Value) {
+[e $ ! <= _Trial -> _Value `ui 1630  ]
 {
-[e = _y -> -> 0 `i `s ]
-[e $ < -> _y `i -> 2 `i 1630  ]
-[e $U 1631  ]
+"36
+[; ;./image.h: 36:             Root += Bit;
+[e =+ _Root _Bit ]
+"37
+[; ;./image.h: 37:             Value -= Trial;
+[e =- _Value -> _Trial `i ]
+"38
+[; ;./image.h: 38:         }
+}
 [e :U 1630 ]
-{
-"55
-[; ;./image.h: 55:             if(i > 1 && j > 1){
-[e $ ! && > -> _i `i -> 1 `i > -> _j `i -> 1 `i 1633  ]
-{
-"56
-[; ;./image.h: 56:                 Gx += pixels[i - 1 + x][j - 1 + y] * robertX[x][y];
-[e =+ _Gx * -> *U + &U *U + &U _pixels * -> -> + - -> _i `i -> 1 `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux * -> -> + - -> _j `i -> 1 `i -> _y `i `ui `ux -> -> # *U &U *U + &U _pixels * -> -> + - -> _i `i -> 1 `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _robertX * -> -> _x `us `ux -> * -> # *U &U *U &U _robertX `ui -> -> 2 `i `ui `ux * -> -> _y `us `ux -> -> # *U &U *U + &U _robertX * -> -> _x `us `ux -> * -> # *U &U *U &U _robertX `ui -> -> 2 `i `ui `ux `ui `ux `i ]
-"57
-[; ;./image.h: 57:                 Gy += pixels[i - 1 + x][j - 1 + y] * robertY[x][y];
-[e =+ _Gy * -> *U + &U *U + &U _pixels * -> -> + - -> _i `i -> 1 `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux * -> -> + - -> _j `i -> 1 `i -> _y `i `ui `ux -> -> # *U &U *U + &U _pixels * -> -> + - -> _i `i -> 1 `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _robertY * -> -> _x `us `ux -> * -> # *U &U *U &U _robertY `ui -> -> 2 `i `ui `ux * -> -> _y `us `ux -> -> # *U &U *U + &U _robertY * -> -> _x `us `ux -> * -> # *U &U *U &U _robertY `ui -> -> 2 `i `ui `ux `ui `ux `i ]
-"58
-[; ;./image.h: 58:             }
+"39
+[; ;./image.h: 39:     }
 }
-[e $U 1634  ]
-"59
-[; ;./image.h: 59:             else{
-[e :U 1633 ]
-{
-"60
-[; ;./image.h: 60:                 Gx += pixels[i + x][j + y] * robertX[x][y];
-[e =+ _Gx * -> *U + &U *U + &U _pixels * -> -> + -> _i `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux * -> -> + -> _j `i -> _y `i `ui `ux -> -> # *U &U *U + &U _pixels * -> -> + -> _i `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _robertX * -> -> _x `us `ux -> * -> # *U &U *U &U _robertX `ui -> -> 2 `i `ui `ux * -> -> _y `us `ux -> -> # *U &U *U + &U _robertX * -> -> _x `us `ux -> * -> # *U &U *U &U _robertX `ui -> -> 2 `i `ui `ux `ui `ux `i ]
-"61
-[; ;./image.h: 61:                 Gy += pixels[i + x][j + y] * robertY[x][y];
-[e =+ _Gy * -> *U + &U *U + &U _pixels * -> -> + -> _i `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux * -> -> + -> _j `i -> _y `i `ui `ux -> -> # *U &U *U + &U _pixels * -> -> + -> _i `i -> _x `i `ui `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _robertY * -> -> _x `us `ux -> * -> # *U &U *U &U _robertY `ui -> -> 2 `i `ui `ux * -> -> _y `us `ux -> -> # *U &U *U + &U _robertY * -> -> _x `us `ux -> * -> # *U &U *U &U _robertY `ui -> -> 2 `i `ui `ux `ui `ux `i ]
-"62
-[; ;./image.h: 62:             }
-}
-[e :U 1634 ]
-"63
-[; ;./image.h: 63:         }
-}
-[e ++ _y -> -> 1 `i `s ]
-[e $ < -> _y `i -> 2 `i 1630  ]
-[e :U 1631 ]
-}
-"64
-[; ;./image.h: 64:     }
-}
-[e ++ _x -> -> 1 `i `s ]
-[e $ < -> _x `i -> 2 `i 1627  ]
+[e =>> _Bit -> -> 2 `i `ui ]
+[e $ > _Bit -> -> 0 `i `ui 1627  ]
 [e :U 1628 ]
 }
-"65
-[; ;./image.h: 65:     novo_pixel = sqrtf((float)(Gx*Gx) + (float)(Gy*Gy));
-[e = _novo_pixel -> ( _sqrtf (1 + -> * _Gx _Gx `f -> * _Gy _Gy `f `uc ]
-"66
-[; ;./image.h: 66:     return novo_pixel;
-[e ) _novo_pixel ]
+"40
+[; ;./image.h: 40:     return Root;
+[e ) _Root ]
 [e $UE 1626  ]
-"67
-[; ;./image.h: 67: }
+"41
+[; ;./image.h: 41: }
 [e :UE 1626 ]
+}
+"55
+[; ;./image.h: 55: unsigned char RobertsCross(){
+[v _RobertsCross `(uc ~T0 @X0 1 ef ]
+{
+[e :U _RobertsCross ]
+[f ]
+"56
+[; ;./image.h: 56:     int Gx = 0;
+[v _Gx `i ~T0 @X0 1 a ]
+[e = _Gx -> 0 `i ]
+"57
+[; ;./image.h: 57:     int Gy = 0;
+[v _Gy `i ~T0 @X0 1 a ]
+[e = _Gy -> 0 `i ]
+"58
+[; ;./image.h: 58:     unsigned char novo_pixel;
+[v _novo_pixel `uc ~T0 @X0 1 a ]
+"59
+[; ;./image.h: 59:     Gx = regiaoAtual[0][0] - regiaoAtual[1][1];
+[e = _Gx - -> *U + &U *U + &U _regiaoAtual * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _regiaoAtual * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _regiaoAtual * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _regiaoAtual * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux `ui `ux `i ]
+"60
+[; ;./image.h: 60:     Gy = regiaoAtual[0][1] - regiaoAtual[1][0];
+[e = _Gy - -> *U + &U *U + &U _regiaoAtual * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _regiaoAtual * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _regiaoAtual * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _regiaoAtual * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux `ui `ux `i ]
+"62
+[; ;./image.h: 62:     novo_pixel = isqrt((Gx*Gx + Gy*Gy));
+[e = _novo_pixel -> ( _isqrt (1 + * _Gx _Gx * _Gy _Gy `uc ]
+"63
+[; ;./image.h: 63:     return novo_pixel;
+[e ) _novo_pixel ]
+[e $UE 1631  ]
+"64
+[; ;./image.h: 64: }
+[e :UE 1631 ]
 }
 "21 ./uart.h
 [; ;./uart.h: 21: void UART_iniciar(){
@@ -1968,14 +1903,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./uart.h: 25:     RXPPSbits.RXPPS = 0x17;
 [e = . . _RXPPSbits 1 0 -> -> 23 `i `uc ]
 "26
-[; ;./uart.h: 26:     TX1STAbits.BRGH = 0;
-[e = . . _TX1STAbits 0 2 -> -> 0 `i `uc ]
+[; ;./uart.h: 26:     TX1STAbits.BRGH = 1;
+[e = . . _TX1STAbits 0 2 -> -> 1 `i `uc ]
 "27
 [; ;./uart.h: 27:     BAUDCON1bits.BRG16 = 0;
 [e = . . _BAUDCON1bits 0 3 -> -> 0 `i `uc ]
 "28
-[; ;./uart.h: 28:     SPBRG = 51;
-[e = _SPBRG -> -> 51 `i `uc ]
+[; ;./uart.h: 28:     SPBRG = 16;
+[e = _SPBRG -> -> 16 `i `uc ]
 "29
 [; ;./uart.h: 29:     RC1STAbits.SPEN = 1;
 [e = . . _RC1STAbits 0 7 -> -> 1 `i `uc ]
@@ -1990,7 +1925,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TX1STAbits 0 4 -> -> 0 `i `uc ]
 "33
 [; ;./uart.h: 33: }
-[e :UE 1635 ]
+[e :UE 1632 ]
 }
 "36
 [; ;./uart.h: 36: char UART_Ler(){
@@ -2000,294 +1935,418 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "37
 [; ;./uart.h: 37:     while(!RCIF);
-[e $U 1637  ]
-[e :U 1638 ]
-[e :U 1637 ]
-[e $ ! _RCIF 1638  ]
-[e :U 1639 ]
+[e $U 1634  ]
+[e :U 1635 ]
+[e :U 1634 ]
+[e $ ! _RCIF 1635  ]
+[e :U 1636 ]
 "38
 [; ;./uart.h: 38:     return RCREG;
 [e ) -> _RCREG `uc ]
-[e $UE 1636  ]
+[e $UE 1633  ]
 "39
 [; ;./uart.h: 39: }
-[e :UE 1636 ]
+[e :UE 1633 ]
 }
-"46
-[; ;./uart.h: 46: void UART_Ler_Texto(char* saida){
+"41
+[; ;./uart.h: 41: void UART_Ler_Pixel(unsigned char* p){
+[v _UART_Ler_Pixel `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _UART_Ler_Pixel ]
+[v _p `*uc ~T0 @X0 1 r1 ]
+[f ]
+"42
+[; ;./uart.h: 42:     while(!RCIF);
+[e $U 1638  ]
+[e :U 1639 ]
+[e :U 1638 ]
+[e $ ! _RCIF 1639  ]
+[e :U 1640 ]
+"43
+[; ;./uart.h: 43:     *p = (unsigned char)RCREG;
+[e = *U _p _RCREG ]
+"44
+[; ;./uart.h: 44: }
+[e :UE 1637 ]
+}
+"51
+[; ;./uart.h: 51: void UART_Ler_Texto(char* saida){
 [v _UART_Ler_Texto `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _UART_Ler_Texto ]
 [v _saida `*uc ~T0 @X0 1 r1 ]
 [f ]
-"47
-[; ;./uart.h: 47:     short index = 0;
+"52
+[; ;./uart.h: 52:     short index = 0;
 [v _index `s ~T0 @X0 1 a ]
 [e = _index -> -> 0 `i `s ]
-"48
-[; ;./uart.h: 48:     char c;
-[v _c `uc ~T0 @X0 1 a ]
-"49
-[; ;./uart.h: 49:     while(c != '$'){
-[e $U 1641  ]
-[e :U 1642 ]
-{
-"50
-[; ;./uart.h: 50:        c = UART_Ler();
-[e = _c ( _UART_Ler ..  ]
-"51
-[; ;./uart.h: 51:        saida[index] = c;
-[e = *U + _saida * -> _index `x -> -> # *U _saida `i `x _c ]
-"52
-[; ;./uart.h: 52:        index++;
-[e ++ _index -> -> 1 `i `s ]
 "53
-[; ;./uart.h: 53:     }
-}
-[e :U 1641 ]
-"49
-[; ;./uart.h: 49:     while(c != '$'){
-[e $ != -> _c `ui -> 36 `ui 1642  ]
-[e :U 1643 ]
+[; ;./uart.h: 53:     char c;
+[v _c `uc ~T0 @X0 1 a ]
 "54
-[; ;./uart.h: 54:     saida[index - 1] = '\0';
-[e = *U + _saida * -> - -> _index `i -> 1 `i `x -> -> # *U _saida `i `x -> -> 0 `ui `uc ]
+[; ;./uart.h: 54:     while(c != '$'){
+[e $U 1642  ]
+[e :U 1643 ]
+{
 "55
-[; ;./uart.h: 55: }
-[e :UE 1640 ]
-}
+[; ;./uart.h: 55:        c = UART_Ler();
+[e = _c ( _UART_Ler ..  ]
+"56
+[; ;./uart.h: 56:        saida[index] = c;
+[e = *U + _saida * -> _index `x -> -> # *U _saida `i `x _c ]
+"57
+[; ;./uart.h: 57:        index++;
+[e ++ _index -> -> 1 `i `s ]
 "58
-[; ;./uart.h: 58: void UART_Escrever(char c){
+[; ;./uart.h: 58:     }
+}
+[e :U 1642 ]
+"54
+[; ;./uart.h: 54:     while(c != '$'){
+[e $ != -> _c `ui -> 36 `ui 1643  ]
+[e :U 1644 ]
+"59
+[; ;./uart.h: 59:     saida[index - 1] = '\0';
+[e = *U + _saida * -> - -> _index `i -> 1 `i `x -> -> # *U _saida `i `x -> -> 0 `ui `uc ]
+"60
+[; ;./uart.h: 60: }
+[e :UE 1641 ]
+}
+"63
+[; ;./uart.h: 63: void UART_Escrever(char c){
 [v _UART_Escrever `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _UART_Escrever ]
 [v _c `uc ~T0 @X0 1 r1 ]
 [f ]
-"59
-[; ;./uart.h: 59:     while(!TX1STAbits.TRMT);
-[e $U 1645  ]
-[e :U 1646 ]
-[e :U 1645 ]
-[e $ ! != -> . . _TX1STAbits 0 1 `i -> 0 `i 1646  ]
+"64
+[; ;./uart.h: 64:     while(!TX1STAbits.TRMT);
+[e $U 1646  ]
 [e :U 1647 ]
-"60
-[; ;./uart.h: 60:     TXREG = c;
+[e :U 1646 ]
+[e $ ! != -> . . _TX1STAbits 0 1 `i -> 0 `i 1647  ]
+[e :U 1648 ]
+"65
+[; ;./uart.h: 65:     TXREG = c;
 [e = _TXREG -> _c `uc ]
-"61
-[; ;./uart.h: 61: }
-[e :UE 1644 ]
+"66
+[; ;./uart.h: 66: }
+[e :UE 1645 ]
 }
-"67
-[; ;./uart.h: 67: void UART_Escrever_Pixel(unsigned char p){
+"72
+[; ;./uart.h: 72: void UART_Escrever_Pixel(unsigned char p){
 [v _UART_Escrever_Pixel `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _UART_Escrever_Pixel ]
 [v _p `uc ~T0 @X0 1 r1 ]
 [f ]
-"68
-[; ;./uart.h: 68:     while(!TX1STAbits.TRMT);
-[e $U 1649  ]
-[e :U 1650 ]
-[e :U 1649 ]
-[e $ ! != -> . . _TX1STAbits 0 1 `i -> 0 `i 1650  ]
+"73
+[; ;./uart.h: 73:     while(!TX1STAbits.TRMT);
+[e $U 1650  ]
 [e :U 1651 ]
-"69
-[; ;./uart.h: 69:     TXREG = p;
+[e :U 1650 ]
+[e $ ! != -> . . _TX1STAbits 0 1 `i -> 0 `i 1651  ]
+[e :U 1652 ]
+"74
+[; ;./uart.h: 74:     TXREG = p;
 [e = _TXREG _p ]
-"70
-[; ;./uart.h: 70: }
-[e :UE 1648 ]
+"75
+[; ;./uart.h: 75: }
+[e :UE 1649 ]
 }
-"76
-[; ;./uart.h: 76: void UART_Escrever_Texto(char* texto){
+"81
+[; ;./uart.h: 81: void UART_Escrever_Texto(char* texto){
 [v _UART_Escrever_Texto `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _UART_Escrever_Texto ]
 [v _texto `*uc ~T0 @X0 1 r1 ]
 [f ]
-"77
-[; ;./uart.h: 77:     int index;
+"82
+[; ;./uart.h: 82:     int index;
 [v _index `i ~T0 @X0 1 a ]
-"78
-[; ;./uart.h: 78:     for(index=0; texto[index]!='\0'; index++)
+"83
+[; ;./uart.h: 83:     for(index=0; texto[index]!='\0'; index++)
 {
 [e = _index -> 0 `i ]
-[e $U 1656  ]
-[e :U 1653 ]
-"79
-[; ;./uart.h: 79:         UART_Escrever(texto[index]);
+[e $U 1657  ]
+[e :U 1654 ]
+"84
+[; ;./uart.h: 84:         UART_Escrever(texto[index]);
 [e ( _UART_Escrever (1 *U + _texto * -> _index `x -> -> # *U _texto `i `x ]
 [e ++ _index -> 1 `i ]
-[e :U 1656 ]
-[e $ != -> *U + _texto * -> _index `x -> -> # *U _texto `i `x `ui -> 0 `ui 1653  ]
-[e :U 1654 ]
+[e :U 1657 ]
+[e $ != -> *U + _texto * -> _index `x -> -> # *U _texto `i `x `ui -> 0 `ui 1654  ]
+[e :U 1655 ]
 }
-"80
-[; ;./uart.h: 80: }
-[e :UE 1652 ]
+"85
+[; ;./uart.h: 85: }
+[e :UE 1653 ]
 }
-"85 main.c
-[; ;main.c: 85: void ConfigurarPIC(void){
+"81 main.c
+[; ;main.c: 81: char entrada[10];
+[v _entrada `uc ~T0 @X0 -> 10 `i e ]
+"87
+[; ;main.c: 87: void ConfigurarPIC(void){
 [v _ConfigurarPIC `(v ~T0 @X0 1 ef ]
 {
 [e :U _ConfigurarPIC ]
 [f ]
-"86
-[; ;main.c: 86:     TRISA = 0x00;
-[e = _TRISA -> -> 0 `i `uc ]
-"87
-[; ;main.c: 87:     TRISB = 0x00;
-[e = _TRISB -> -> 0 `i `uc ]
 "88
-[; ;main.c: 88:     TRISC = 0x80;
-[e = _TRISC -> -> 128 `i `uc ]
+[; ;main.c: 88:     TRISA = 0x00;
+[e = _TRISA -> -> 0 `i `uc ]
 "89
-[; ;main.c: 89: }
-[e :UE 1657 ]
-}
-"95
-[; ;main.c: 95: void EnviarImagem(void){
-[v _EnviarImagem `(v ~T0 @X0 1 ef ]
-{
-[e :U _EnviarImagem ]
-[f ]
-"96
-[; ;main.c: 96:     short i,j;
-[v _i `s ~T0 @X0 1 a ]
-[v _j `s ~T0 @X0 1 a ]
-"97
-[; ;main.c: 97:     LATAbits.LATA7 = 1;
-[e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
-"98
-[; ;main.c: 98:     for(i = 1; i < 4 - 1; i++){
-{
-[e = _i -> -> 1 `i `s ]
-[e $ < -> _i `i - -> 4 `i -> 1 `i 1659  ]
-[e $U 1660  ]
-[e :U 1659 ]
-{
-"99
-[; ;main.c: 99:         for(j = 1; j < 4 - 1; j++){
-{
-[e = _j -> -> 1 `i `s ]
-[e $ < -> _j `i - -> 4 `i -> 1 `i 1662  ]
-[e $U 1663  ]
-[e :U 1662 ]
-{
-"100
-[; ;main.c: 100:             UART_Escrever_Pixel(pixels[i][j]);
-[e ( _UART_Escrever_Pixel (1 *U + &U *U + &U _pixels * -> -> _i `us `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux * -> -> _j `us `ux -> -> # *U &U *U + &U _pixels * -> -> _i `us `ux -> * -> # *U &U *U &U _pixels `ui -> -> 4 `i `ui `ux `ui `ux ]
-"101
-[; ;main.c: 101:         }
-}
-[e ++ _j -> -> 1 `i `s ]
-[e $ < -> _j `i - -> 4 `i -> 1 `i 1662  ]
-[e :U 1663 ]
-}
-"102
-[; ;main.c: 102:     }
-}
-[e ++ _i -> -> 1 `i `s ]
-[e $ < -> _i `i - -> 4 `i -> 1 `i 1659  ]
-[e :U 1660 ]
-}
-"103
-[; ;main.c: 103:     LATAbits.LATA7 = 0;
-[e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
-"104
-[; ;main.c: 104: }
+[; ;main.c: 89:     TRISB = 0x00;
+[e = _TRISB -> -> 0 `i `uc ]
+"90
+[; ;main.c: 90:     TRISC = 0x80;
+[e = _TRISC -> -> 128 `i `uc ]
+"91
+[; ;main.c: 91: }
 [e :UE 1658 ]
 }
-"118
-[; ;main.c: 118: void RobertsCrossSerial(void){
+"105
+[; ;main.c: 105: void RobertsCrossSerial(void){
 [v _RobertsCrossSerial `(v ~T0 @X0 1 ef ]
 {
 [e :U _RobertsCrossSerial ]
 [f ]
-"120
-[; ;main.c: 120:     short i,j;
+"106
+[; ;main.c: 106:     short i,j,w,h;
 [v _i `s ~T0 @X0 1 a ]
 [v _j `s ~T0 @X0 1 a ]
-"121
-[; ;main.c: 121:     unsigned char novo_pixel;
+[v _w `s ~T0 @X0 1 a ]
+[v _h `s ~T0 @X0 1 a ]
+"107
+[; ;main.c: 107:     unsigned char p;
+[v _p `uc ~T0 @X0 1 a ]
+"108
+[; ;main.c: 108:     unsigned char novo_pixel;
 [v _novo_pixel `uc ~T0 @X0 1 a ]
-"122
-[; ;main.c: 122:     for(i = 1; i < 4 - 1; i++){
+"109
+[; ;main.c: 109:     LATAbits.LATA6 = 1;
+[e = . . _LATAbits 0 6 -> -> 1 `i `uc ]
+"110
+[; ;main.c: 110:     for(i = 0; i < imgAltura; i++){
 {
-[e = _i -> -> 1 `i `s ]
-[e $ < -> _i `i - -> 4 `i -> 1 `i 1666  ]
+[e = _i -> -> 0 `i `s ]
+[e $U 1663  ]
+[e :U 1660 ]
+{
+"111
+[; ;main.c: 111:         for(j = 0; j < imgLargura; j++){
+{
+[e = _j -> -> 0 `i `s ]
 [e $U 1667  ]
-[e :U 1666 ]
+[e :U 1664 ]
 {
-"123
-[; ;main.c: 123:         for(j = 1; j < 4 - 1; j++){
+"112
+[; ;main.c: 112:             for(h = 0; h < 2; h++){
 {
-[e = _j -> -> 1 `i `s ]
-[e $ < -> _j `i - -> 4 `i -> 1 `i 1669  ]
-[e $U 1670  ]
+[e = _h -> -> 0 `i `s ]
+[e $ < -> _h `i -> 2 `i 1668  ]
+[e $U 1669  ]
+[e :U 1668 ]
+{
+"113
+[; ;main.c: 113:                 for(w = 0; w < 2; w++){
+{
+[e = _w -> -> 0 `i `s ]
+[e $ < -> _w `i -> 2 `i 1671  ]
+[e $U 1672  ]
+[e :U 1671 ]
+{
+"114
+[; ;main.c: 114:                     UART_Ler_Pixel(&p);
+[e ( _UART_Ler_Pixel (1 &U _p ]
+"115
+[; ;main.c: 115:                     regiaoAtual[h][w] = p;
+[e = *U + &U *U + &U _regiaoAtual * -> -> _h `us `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux * -> -> _w `us `ux -> -> # *U &U *U + &U _regiaoAtual * -> -> _h `us `ux -> * -> # *U &U *U &U _regiaoAtual `ui -> -> 2 `i `ui `ux `ui `ux _p ]
+"116
+[; ;main.c: 116:                 }
+}
+[e ++ _w -> -> 1 `i `s ]
+[e $ < -> _w `i -> 2 `i 1671  ]
+[e :U 1672 ]
+}
+"117
+[; ;main.c: 117:             }
+}
+[e ++ _h -> -> 1 `i `s ]
+[e $ < -> _h `i -> 2 `i 1668  ]
 [e :U 1669 ]
-{
-"124
-[; ;main.c: 124:             novo_pixel = RobertsCross(i,j);
-[e = _novo_pixel ( _RobertsCross (2 , _i _j ]
-"128
-[; ;main.c: 128:         }
+}
+"118
+[; ;main.c: 118:             novo_pixel = RobertsCross();
+[e = _novo_pixel ( _RobertsCross ..  ]
+"119
+[; ;main.c: 119:             LATAbits.LATA7 = 1;
+[e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
+"120
+[; ;main.c: 120:             UART_Escrever_Pixel(novo_pixel);
+[e ( _UART_Escrever_Pixel (1 _novo_pixel ]
+"121
+[; ;main.c: 121:             LATAbits.LATA7 = 0;
+[e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
+"122
+[; ;main.c: 122:         }
 }
 [e ++ _j -> -> 1 `i `s ]
-[e $ < -> _j `i - -> 4 `i -> 1 `i 1669  ]
-[e :U 1670 ]
+[e :U 1667 ]
+[e $ < -> _j `i _imgLargura 1664  ]
+[e :U 1665 ]
 }
-"129
-[; ;main.c: 129:     }
+"123
+[; ;main.c: 123:     }
 }
 [e ++ _i -> -> 1 `i `s ]
-[e $ < -> _i `i - -> 4 `i -> 1 `i 1666  ]
-[e :U 1667 ]
+[e :U 1663 ]
+[e $ < -> _i `i _imgAltura 1660  ]
+[e :U 1661 ]
 }
+"124
+[; ;main.c: 124:     LATAbits.LATA6 = 0;
+[e = . . _LATAbits 0 6 -> -> 0 `i `uc ]
+"125
+[; ;main.c: 125: }
+[e :UE 1659 ]
+}
+"127
+[; ;main.c: 127: void obterDimensoes(){
+[v _obterDimensoes `(v ~T0 @X0 1 ef ]
+{
+[e :U _obterDimensoes ]
+[f ]
+"128
+[; ;main.c: 128:     short i = 0;
+[v _i `s ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `s ]
+"129
+[; ;main.c: 129:     short j;
+[v _j `s ~T0 @X0 1 a ]
+"130
+[; ;main.c: 130:     imgLargura = 0;
+[e = _imgLargura -> 0 `i ]
 "131
-[; ;main.c: 131: }
-[e :UE 1665 ]
+[; ;main.c: 131:     imgAltura = 0;
+[e = _imgAltura -> 0 `i ]
+"132
+[; ;main.c: 132:     while(entrada[i] != 'x'){
+[e $U 1675  ]
+[e :U 1676 ]
+{
+"133
+[; ;main.c: 133:         imgLargura = 10 * imgLargura + (entrada[i] - '0');
+[e = _imgLargura -> + -> * -> 10 `i _imgLargura `ui - -> *U + &U _entrada * -> -> _i `us `ux -> -> # *U &U _entrada `ui `ux `ui -> 48 `ui `i ]
+"134
+[; ;main.c: 134:         i++;
+[e ++ _i -> -> 1 `i `s ]
+"135
+[; ;main.c: 135:     }
+}
+[e :U 1675 ]
+"132
+[; ;main.c: 132:     while(entrada[i] != 'x'){
+[e $ != -> *U + &U _entrada * -> -> _i `us `ux -> -> # *U &U _entrada `ui `ux `ui -> 120 `ui 1676  ]
+[e :U 1677 ]
+"136
+[; ;main.c: 136:     i++;
+[e ++ _i -> -> 1 `i `s ]
+"137
+[; ;main.c: 137:     while(entrada[i] != '\0'){
+[e $U 1678  ]
+[e :U 1679 ]
+{
+"138
+[; ;main.c: 138:         imgAltura = 10 * imgAltura + (entrada[i] - '0');
+[e = _imgAltura -> + -> * -> 10 `i _imgAltura `ui - -> *U + &U _entrada * -> -> _i `us `ux -> -> # *U &U _entrada `ui `ux `ui -> 48 `ui `i ]
+"139
+[; ;main.c: 139:         i++;
+[e ++ _i -> -> 1 `i `s ]
+"140
+[; ;main.c: 140:     }
+}
+[e :U 1678 ]
+"137
+[; ;main.c: 137:     while(entrada[i] != '\0'){
+[e $ != -> *U + &U _entrada * -> -> _i `us `ux -> -> # *U &U _entrada `ui `ux `ui -> 0 `ui 1679  ]
+[e :U 1680 ]
+"141
+[; ;main.c: 141: }
+[e :UE 1674 ]
+}
+"143
+[; ;main.c: 143: void iniciarConexao(){
+[v _iniciarConexao `(v ~T0 @X0 1 ef ]
+{
+[e :U _iniciarConexao ]
+[f ]
+"144
+[; ;main.c: 144:     UART_Escrever_Texto("ACK");
+[e ( _UART_Escrever_Texto (1 :s 1C ]
+"145
+[; ;main.c: 145:     UART_Ler_Texto(entrada);
+[e ( _UART_Ler_Texto (1 &U _entrada ]
+"146
+[; ;main.c: 146:     obterDimensoes();
+[e ( _obterDimensoes ..  ]
+"147
+[; ;main.c: 147:     UART_Escrever_Texto("ACK");
+[e ( _UART_Escrever_Texto (1 :s 2C ]
+"148
+[; ;main.c: 148:     RobertsCrossSerial();
+[e ( _RobertsCrossSerial ..  ]
+"149
+[; ;main.c: 149: }
+[e :UE 1681 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"139
-[; ;main.c: 139: int main(void) {
+"157
+[; ;main.c: 157: int main(void) {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"142
-[; ;main.c: 142:     ConfigurarPIC();
-[e ( _ConfigurarPIC ..  ]
-"144
-[; ;main.c: 144:     LATA = 0x10;
-[e = _LATA -> -> 16 `i `uc ]
-"146
-[; ;main.c: 146:     while (1) {
-[e :U 1674 ]
-{
-"154
-[; ;main.c: 154:         LATBbits.LATB0 = 1;
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-"155
-[; ;main.c: 155:         RobertsCrossSerial();
-[e ( _RobertsCrossSerial ..  ]
-"156
-[; ;main.c: 156:         LATBbits.LATB0 = 0;
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-"157
-[; ;main.c: 157:         RobertsCrossSerial();
-[e ( _RobertsCrossSerial ..  ]
 "158
-[; ;main.c: 158:     }
-}
-[e :U 1673 ]
-[e $U 1674  ]
-[e :U 1675 ]
+[; ;main.c: 158:     ConfigurarPIC();
+[e ( _ConfigurarPIC ..  ]
+"159
+[; ;main.c: 159:     UART_iniciar();
+[e ( _UART_iniciar ..  ]
 "160
-[; ;main.c: 160:     return 0;
-[e ) -> 0 `i ]
-[e $UE 1672  ]
-"161
-[; ;main.c: 161: }
-[e :UE 1672 ]
+[; ;main.c: 160:     LATA = 0x10;
+[e = _LATA -> -> 16 `i `uc ]
+"162
+[; ;main.c: 162:     while (1) {
+[e :U 1684 ]
+{
+"163
+[; ;main.c: 163:         UART_Ler_Texto(entrada);
+[e ( _UART_Ler_Texto (1 &U _entrada ]
+"164
+[; ;main.c: 164:         if(strcmp(entrada,"SYN") == 0){
+[e $ ! == ( _strcmp (2 , -> &U _entrada `*Cuc :s 3C -> 0 `i 1686  ]
+{
+"165
+[; ;main.c: 165:             iniciarConexao();
+[e ( _iniciarConexao ..  ]
+"166
+[; ;main.c: 166:         }
 }
+[e :U 1686 ]
+"167
+[; ;main.c: 167:     }
+}
+[e :U 1683 ]
+[e $U 1684  ]
+[e :U 1685 ]
+"169
+[; ;main.c: 169:     return 0;
+[e ) -> 0 `i ]
+[e $UE 1682  ]
+"170
+[; ;main.c: 170: }
+[e :UE 1682 ]
+}
+[a 3C 83 89 78 0 ]
+[a 1C 65 67 75 0 ]
+[a 2C 65 67 75 0 ]
